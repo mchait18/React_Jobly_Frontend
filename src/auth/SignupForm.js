@@ -104,7 +104,6 @@ function SignupForm({ signup }) {
                             <button
                                 type="submit"
                                 className="btn btn-primary float-right"
-                                onSubmit={handleSubmit}
                             >
                                 Submit
                             </button>
