@@ -68,12 +68,20 @@ class JoblyApi {
         let res = await this.request("auth/token", loginData, "post");
         return res.token;
     }
-    static applyToJob(username, id) {
-        this.request(`users/${username}/jobs/${id}`, "post");
+    static async applyToJob(username, id) {
+        console.log("id is ", id)
+        await this.request(`users/${username}/jobs/${id}`, undefined, "post");
     }
     static async saveProfile(username, profileData) {
-        let res = await this.request(`users/${username}`, profileData, "patch");
-        return res.user;
+        let status = await this.checkPassword(username, profileData.password)
+        if (status.msg === "Success") {
+            let res = await this.request(`users/${username}`, profileData, "patch");
+            return res.user;
+        }
+    }
+    static async checkPassword(username, password) {
+        let res = await this.request(`auth/checkPassword`, { username, password }, "post")
+        return res
     }
 }
 

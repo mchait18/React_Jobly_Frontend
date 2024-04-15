@@ -53,6 +53,7 @@ function App() {
           // put the token on the Api class so it can use it to call the API.
           JoblyApi.token = token;
           let currentUser = await JoblyApi.getCurrentUser(username)
+          console.log("current user is ", currentUser)
           setCurrentUser(currentUser)
           setApplicationIds(new Set(currentUser.applications))
         } catch (err) {

@@ -9,7 +9,7 @@ const JobCard = ({ job }) => {
             <div className="card-body">
                 <h6 className="card-title">{job.title}</h6>
                 <p>{job.companyName}</p>
-                {job.salary && <div><small>Salary: {formatSalary(job.salary)} </small></div>}
+                {job.salary && <div><small>Salary: ${formatSalary(job.salary)} </small></div>}
                 {job.equity !== undefined && <div><small>Equity: {job.equity} </small></div>}
                 {hasAppliedToJob(job.id) ? <button
                     className="btn btn-danger font-weight-bold text-uppercase float-right"
